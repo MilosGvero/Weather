@@ -1,0 +1,25 @@
+version: '3.7'
+
+services:
+  timescaledb:
+    image: timescale/timescaledb-ha:pg16
+    container_name: timescaledb_container_1
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_USER: milos
+      POSTGRES_PASSWORD: milos
+      POSTGRES_DB: weatherdb
+    volumes:
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
+  
+  pgadmin:
+    image: dpage/pgadmin4
+    container_name: pgadmin_container
+    ports:
+      - "8080:80"
+    environment:
+      PGADMIN_DEFAULT_EMAIL: admin@example.com
+      PGADMIN_DEFAULT_PASSWORD: admin
+    
+  

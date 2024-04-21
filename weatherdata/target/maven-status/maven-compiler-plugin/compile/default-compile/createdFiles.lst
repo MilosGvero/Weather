@@ -1,0 +1,5 @@
+weatherdata\DataJob.class
+weatherdata\SecondsToDateDeserializer.class
+weatherdata\WeatherResponse.class
+weatherdata\MainResponse.class
+weatherdata\Weather.class
