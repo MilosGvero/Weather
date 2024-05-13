@@ -52,7 +52,7 @@ public class DataJob implements Job {
 						.configure(DeserializationFeature.READ_DATE_TIMESTAMPS_AS_NANOSECONDS, false);
 				objectMapper.registerModule(new JavaTimeModule());
 				WeatherResponse entity = objectMapper.readValue(responseData, WeatherResponse.class);
-				String connUrl = "jdbc:postgresql://localhost:5432/weatherdb?user=milos&password=milos";
+				String connUrl = "jdbc:postgresql://host.docker.internal:5432/weatherdb?user=milos&password=milos";
 				try (Connection conn = DriverManager.getConnection(connUrl)) {
 					try (PreparedStatement stmt = conn.prepareStatement(
 							"INSERT INTO weather_data (time, location, current_temperature) VALUES (?, ?, ?)")) {
